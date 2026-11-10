@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.9.0.schema.json
+PackageIdentifier: reis622.trnl
+PackageVersion: 1.1.0
+PackageLocale: en-US
+Publisher: reis622
+PublisherUrl: https://github.com/reis622
+PackageName: trnl
+PackageUrl: https://github.com/reis622/trnl
+License: MIT
+LicenseUrl: https://github.com/reis622/trnl/blob/main/LICENSE
+ShortDescription: Fast terminal translator, online first with offline fallback (en, de, tr, es, ja, zh).
+Description: |-
+  trnl translates words and sentences in the terminal. Single words show up to 3 real meanings.
+  Uses Google Translate when online and bundled CTranslate2/Argos models plus WikDict dictionaries offline
+  (download once with `trnl --setup`).
+Moniker: trnl
+Tags:
+  - translate
+  - translator
+  - cli
+  - offline
+  - dictionary
+ManifestType: defaultLocale
+ManifestVersion: 1.9.0

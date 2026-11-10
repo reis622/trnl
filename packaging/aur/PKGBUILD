@@ -1,0 +1,20 @@
+# Maintainer: reis622 <reis622@users.noreply.github.com>
+# AUR package "trnl-bin": prebuilt bundle from the GitHub release (no Python deps needed).
+pkgname=trnl-bin
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="Fast terminal translator: online first, offline fallback (en de tr es ja zh)"
+arch=('x86_64')
+url="https://github.com/reis622/trnl"
+license=('MIT')
+provides=('trnl')
+conflicts=('trnl')
+options=('!strip')
+source=("https://github.com/reis622/trnl/releases/download/v${pkgver}/trnl-${pkgver}-linux-x64.tar.gz")
+sha256sums=('REPLACE_WITH_SHA256_linux-x64')
+
+package() {
+  install -d "${pkgdir}/opt/trnl" "${pkgdir}/usr/bin"
+  cp -a "${srcdir}/trnl/." "${pkgdir}/opt/trnl/"
+  ln -s /opt/trnl/trnl "${pkgdir}/usr/bin/trnl"
+}

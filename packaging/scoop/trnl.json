@@ -1,0 +1,25 @@
+{
+    "version": "1.1.0",
+    "description": "Fast terminal translator: online first, offline fallback (en de tr es ja zh), up to 3 meanings per word",
+    "homepage": "https://github.com/reis622/trnl",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/reis622/trnl/releases/download/v1.1.0/trnl-1.1.0-windows-x64.zip",
+            "hash": "REPLACE_WITH_SHA256_windows-x64",
+            "extract_dir": "trnl"
+        }
+    },
+    "depends": "extras/vcredist2022",
+    "bin": "trnl.exe",
+    "notes": "Download offline models and dictionaries once (~1.4 GB): trnl --setup",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/reis622/trnl/releases/download/v$version/trnl-$version-windows-x64.zip",
+                "hash": { "url": "https://github.com/reis622/trnl/releases/download/v$version/SHA256SUMS.txt" }
+            }
+        }
+    }
+}

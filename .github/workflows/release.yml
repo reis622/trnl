@@ -1,0 +1,22 @@
+# On a version tag (v*): test, build wheel + sdist and attach them to the GitHub release of that tag.
+# The one-line installers (install.ps1 / install.sh) pick the wheel of the latest release.
+name: release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install . pytest build && pytest -q tests
+      - run: python -m build
+      - env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 ||
+            gh release create "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" --title "trnl $GITHUB_REF_NAME" --notes "trnl $GITHUB_REF_NAME"
+          gh release upload "$GITHUB_REF_NAME" dist/* -R "$GITHUB_REPOSITORY" --clobber

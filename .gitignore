@@ -1,0 +1,9 @@
+build/
+dist/
+dist-models/
+*.egg-info/
+__pycache__/
+.pytest_cache/
+windows/*.whl
+*.zip
+*.pyc

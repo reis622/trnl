@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trnl"
+version = "1.1.0"
+description = "Fast terminal translator: Google online, CTranslate2/Argos offline (en, de, tr, es, ja, zh), up to 3 meanings per word"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "trnl contributors" }]
+keywords = ["translate", "translator", "cli", "offline", "argos", "ctranslate2", "dictionary"]
+classifiers = [
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+  "ctranslate2>=4.0",
+  "sentencepiece>=0.2",
+  "platformdirs>=3",
+  "pykakasi>=2.2",
+  "pypinyin>=0.50",
+  "pyreadline3>=3.4; sys_platform == 'win32'",
+]
+
+[project.urls]
+Homepage = "https://github.com/reis622/trnl"
+Issues = "https://github.com/reis622/trnl/issues"
+
+[project.scripts]
+trnl = "trnl.cli:entry"
+
+[tool.setuptools.packages.find]
+where = ["src"]
