@@ -78,11 +78,15 @@ PYEOF
     say "Internetsiz kullanim icin dil paketleri / offline packs (optional):  trnl -s   (only en,tr: trnl -s en,tr)"
     case ":$PATH:" in
         *":$BIN:"*) ;;
-        *) [ "$WHERE" = pipx ] || {
-               say ""
-               say "$BIN PATH'te degil / is not on your PATH. Ekle / add it:"
-               say "  echo 'export PATH=\"\$HOME/.local/bin:\$PATH\"' >> ~/.profile   (zsh: ~/.zshrc)  then open a new terminal"
-           } ;;
+        *)
+            if [ "$WHERE" = pipx ]; then
+                say "trnl bulunamazsa / if trnl is not found:  pipx ensurepath   (then open a new terminal)"
+            else
+                say ""
+                say "$BIN PATH'te degil / is not on your PATH. Ekle / add it:"
+                say "  echo 'export PATH=\"\$HOME/.local/bin:\$PATH\"' >> ~/.profile   (zsh: ~/.zshrc)  then open a new terminal"
+            fi
+            ;;
     esac
 }
 
